@@ -1,27 +1,33 @@
 class Hangman {
   constructor(words) {
     this.words = words;
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   pickWord() {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   checkIfLetter(keyCode) {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   checkClickedLetters(letter) {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   addCorrectLetter(letter) {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   addWrongLetter(letter) {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 
   checkGameOver() {
@@ -29,7 +35,8 @@ class Hangman {
   }
 
   checkWinner() {
-    // ... your code goes here
+		// ... your code goes here
+		
   }
 }
 
@@ -45,11 +52,13 @@ if (startGameButton) {
     // hangman.secretWord = hangman.pickWord();
     // hangmanCanvas = new HangmanCanvas(hangman.secretWord);
 
-    // ... your code goes here
+		// ... your code goes here
+		
   });
 }
 
 document.addEventListener('keydown', event => {
   // React to user pressing a key
-  // ... your code goes here
+	// ... your code goes here
+	
 });
