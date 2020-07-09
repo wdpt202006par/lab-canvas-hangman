@@ -69,12 +69,37 @@ if (startGameButton) {
     // HINT (uncomment when start working on the canvas portion of the lab)
     hangman.secretWord = hangman.pickWord();
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
-
-    hangmanCanvas.createBoard();
   });
 }
 
 document.addEventListener('keydown', event => {
   // React to user pressing a key
   // ... your code goes here
+
+  event.key // "/" "a"
+
+  if (event.key)
 });
+
+/*
+   // vérifier si la lettre à déjà été cliquée
+    this.checkIfLetter(letter);
+    // vérifier si on l'a déjà
+    this.checkClickedLetter(letter);
+    // vérfier si elle appartient au mot secret
+*/
+
+/*Si la touche pressée est une lettre de l'alphabet
+  - Alors:
+    Si cette lettre n'a jamais été essayé avant
+      - Alors
+        Si la lettre est contenue dans le mot secret:
+          - Alors:
+            - on affiche la lettre à sa place
+            - on vérifie si gagné
+          - Sinon:
+            - on affiche la lettre en haut a droite
+            - on trace une étape du pendu
+            - on vérifie si perdu
+      - Sinon: rien
+  - Sinon: on ignore la touche*/ 

@@ -2,6 +2,8 @@ class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
     this.secretWord = secretWord;
+
+    this.createBoard()
   }
 
   createBoard() {
@@ -24,11 +26,7 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(letter) {
-    // vérifier si la lettre à déjà été cliquée
-    this.checkIfLetter(letter);
-    // vérifier si on l'a déjà
-    this.checkClickedLetter(letter);
-    // vérfier si elle appartient au mot secret
+ 
     // si oui, tu l'écris dans le mot à la bonne position. 
     if (this.secretWord.includes(letter)) {
       let position = secretWord.indexOf(letter);
