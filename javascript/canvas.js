@@ -32,11 +32,28 @@ class HangmanCanvas {
 
   writeCorrectLetter(letter) {
     // ... your code goes here
-
+    this.context.font = "40px Arial" 
+    let correctLetter = hangman.secretWord.split('');
+    console.log(correctLetter)
+    correctLetter.forEach((el, index) => {
+      if (el === letter) {
+        // console.log('this letter exist');
+        this.context.fillText(el, 255+index*46, 760);
+      } 
+    })
   }
 
   writeWrongLetter(letter, errorsLeft) {
     // ... your code goes here
+    // this.context.font = "40px Arial" 
+    // let correctLetter = hangman.secretWord.split('');
+    // console.log(correctLetter)
+    // correctLetter.forEach((el, index) => {
+    //   if (el === letter) {
+    //     // console.log('this letter exist');
+    //     this.context.fillText(el, 700+index*46, 250);
+    //   } 
+    // })
   }
 
   drawHangman(errorsLeft) {

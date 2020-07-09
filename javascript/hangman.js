@@ -76,6 +76,38 @@ if (startGameButton) {
 }
 
 document.addEventListener('keydown', event => {
-  // React to user pressing a key
-  // ... your code goes here
+	// React to user pressing a key
+	// ... your code goes here
+	console.log(event.key)
+	if (hangman.checkIfLetter(event.key)) {
+		// WOOT: this is a [a-z] letter
+		const letter = event.key;
+		if (hangman.checkClickedLetters(letter)) {
+			// New letter
+			console.log('brand new letter guess')
+			if (hangman.secretWord.includes(letter)) {
+				// BINGO: letter is IN !
+				hangman.addCorrectLetter(letter)
+				// draw the correct letter
+				hangmanCanvas.writeCorrectLetter(letter);
+				if (hangman.checkWinner()) {
+					hangmanCanvas.winner()
+				}
+			} else {
+				// NOPE: wrong guess
+				hangman.addWrongLetter(letter)
+				hangmanCanvas.drawHangman(hangman.errorsLeft)
+				// draw the wrong letter
+				hangmanCanvas.writeWrongLetter(letter, hangman.errorsLeft)
+				if (hangman.checkGameOver()) {
+					hangmanCanvas.gameOver()
+				}
+			}
+		} else {
+			// Already tried letter
+			console.log('you already tried this letter')
+		}
+	} else {
+		console.log('not a letter')
+	}
 });
