@@ -3,6 +3,7 @@ body {
   margin:0;
   display:flex; min-height:100vh;
 }
+
 body >.container {margin:auto;}
 
 header {text-align:center;}
@@ -23,7 +24,7 @@ header {text-align:center;}
 }
 
 #hangman {
-
+border: 1px solid;
 }
 
 .container {display:inline-block; position: relative;}
