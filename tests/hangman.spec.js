@@ -38,7 +38,7 @@ describe('Hangman Game', () => {
 
     describe('errorsLeft', () => {
       it('should be at the starting value', () => {
-        expect(hangman.errorsLeft).toEqual(10);
+        expect(hangman.errorsLeft).toEqual(8);
       });
     });
 
@@ -73,21 +73,21 @@ describe('Hangman Game', () => {
     });
 
     it('should return a boolean', () => {
-      let keyCode = 43;
-      const result = hangman.checkIfLetter(keyCode);
+      let key = 'a';
+      const result = hangman.checkIfLetter(key);
       expect(typeof result).toBe('boolean');
     });
 
     it('should return false if given keycode of not a letter', () => {
-      expect(hangman.checkIfLetter(43)).toEqual(false);
-      expect(hangman.checkIfLetter(60)).toEqual(false);
-      expect(hangman.checkIfLetter(100)).toEqual(false);
+      expect(hangman.checkIfLetter('3')).toEqual(false);
+      expect(hangman.checkIfLetter(',')).toEqual(false);
+      expect(hangman.checkIfLetter('/')).toEqual(false);
     });
 
     it('should return true if given keycode of a letter', () => {
-      expect(hangman.checkIfLetter(65)).toEqual(true);
-      expect(hangman.checkIfLetter(76)).toEqual(true);
-      expect(hangman.checkIfLetter(90)).toEqual(true);
+      expect(hangman.checkIfLetter('a')).toEqual(true);
+      expect(hangman.checkIfLetter('z')).toEqual(true);
+      expect(hangman.checkIfLetter('t')).toEqual(true);
     });
   });
 
