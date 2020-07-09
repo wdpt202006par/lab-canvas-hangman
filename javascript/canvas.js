@@ -1,60 +1,34 @@
-class Hangman {
-  constructor(words) {
-    this.words = words;
+class HangmanCanvas {
+  constructor(secretWord) {
+    this.context = document.getElementById('hangman').getContext('2d');
     // ... your code goes here
-    this.secretWord = this.pickWord();
-    this.letters = []; // all unique letters tried
-    this.guessedLetters = ''; // the already found letters
-    this.errorsLeft = 8;
   }
-  pickWord() {
+
+  createBoard() {
     // ... your code goes here
-    const rand = Math.floor(Math.random()*this.words.length);
-    return this.words[rand];
   }
-  checkIfLetter(key) {
+
+  drawLines() {
     // ... your code goes here
-    const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    if (alphabet.includes(key)) {
-      return true;
-    } else {
-      return false;
-    }
   }
-  checkClickedLetters(letter) {
+
+  writeCorrectLetter(letter) {
     // ... your code goes here
-    if (this.letters.includes(letter)) {
-      // already present
-      return false;
-    } else {
-      // not already present
-      this.letters.push(letter);
-      return true;
-    }
   }
-  addCorrectLetter(letter) {
+
+  writeWrongLetter(letter, errorsLeft) {
     // ... your code goes here
-    this.guessedLetters += letter;
   }
-  addWrongLetter(letter) {
+
+  drawHangman(errorsLeft) {
     // ... your code goes here
-    this.errorsLeft--;
   }
-  checkGameOver() {
+
+  gameOver() {
     // ... your code goes here
-    if (this.errorsLeft > 0) {
-      return false;
-    } else {
-      return true;
-    }
   }
-  checkWinner() {
+
+  winner() {
     // ... your code goes here
-    if (this.guessedLetters.length === this.secretWord.length) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
-
