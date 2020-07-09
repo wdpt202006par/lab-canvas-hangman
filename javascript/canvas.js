@@ -63,7 +63,52 @@ class HangmanCanvas {
     this.context.lineWidth = 5;
     this.context.stroke();
 
+    this.context.beginPath();
+    this.context.moveTo(100, 730);
+    this.context.lineTo(100, 350);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
 
+    this.context.beginPath();
+    this.context.moveTo(100, 350);
+    this.context.lineTo(350, 350);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
+
+    this.context.beginPath();
+    this.context.moveTo(350, 350);
+    this.context.lineTo(350, 400);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
+
+    this.context.beginPath();
+    this.context.arc(350, 435, 35, 0, Math.PI * 2);
+    this.context.stroke();
+    this.context.closePath();
+
+    this.context.beginPath();
+    this.context.moveTo(350, 470);
+    this.context.lineTo(350, 600);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
+
+    this.context.beginPath();
+    this.context.moveTo(350, 600);
+    this.context.lineTo(300, 650);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
+
+    this.context.beginPath();
+    this.context.moveTo(350, 600);
+    this.context.lineTo(400, 650);
+    this.context.closePath();
+    this.context.lineWidth = 5;
+    this.context.stroke();
   }
 
   gameOver() {
