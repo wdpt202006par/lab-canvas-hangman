@@ -1,60 +1,45 @@
-class Hangman {
-  constructor(words) {
-    this.words = words;
-    // ... your code goes here
-    this.secretWord = this.pickWord();
-    this.letters = []; // all unique letters tried
-    this.guessedLetters = ''; // the already found letters
-    this.errorsLeft = 8;
+class HangmanCanvas {
+  constructor(secretWord) {
+    this.context = document.getElementById('hangman').getContext('2d');
+    this.secretWord = secretWord;
   }
-  pickWord() {
-    // ... your code goes here
-    const rand = Math.floor(Math.random()*this.words.length);
-    return this.words[rand];
+
+  createBoard() {
+    this.context.clearRect(0,0, this.context.canvas.width, this.context.canvas.height);
+    this.drawLines();
   }
-  checkIfLetter(key) {
-    // ... your code goes here
-    const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    if (alphabet.includes(key)) {
-      return true;
-    } else {
-      return false;
+
+  drawLines() {
+    
+    let fin = 196;
+    let debut=0;
+    for (let i=0; i<this.secretWord.length; i++) { 
+      debut= fin +14;
+      this.context.beginPath();
+      this.context.moveTo(debut,775);
+      fin =debut+32;
+      this.context.lineTo(fin,775);
+      this.context.stroke();
     }
   }
-  checkClickedLetters(letter) {
+
+  writeCorrectLetter(letter) {
     // ... your code goes here
-    if (this.letters.includes(letter)) {
-      // already present
-      return false;
-    } else {
-      // not already present
-      this.letters.push(letter);
-      return true;
-    }
   }
-  addCorrectLetter(letter) {
+
+  writeWrongLetter(letter, errorsLeft) {
     // ... your code goes here
-    this.guessedLetters += letter;
   }
-  addWrongLetter(letter) {
+
+  drawHangman(errorsLeft) {
     // ... your code goes here
-    this.errorsLeft--;
   }
-  checkGameOver() {
+
+  gameOver() {
     // ... your code goes here
-    if (this.errorsLeft > 0) {
-      return false;
-    } else {
-      return true;
-    }
   }
-  checkWinner() {
+
+  winner() {
     // ... your code goes here
-    if (this.guessedLetters.length === this.secretWord.length) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
-
