@@ -30,8 +30,8 @@ class HangmanCanvas {
   writeCorrectLetter(letter) {
     // ... your code goes here
     this.context.font = '40px Arial'
-    hangman.secretWord.split('').forEach((letter, i) => {
-      if (letter === index) {
+    hangman.secretWord.split('').forEach((l, i) => {
+      if (l === letter) {
         this.context.fillText(letter, 200+i*50, 740, 40)
       }
     })

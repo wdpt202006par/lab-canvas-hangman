@@ -70,7 +70,7 @@ let hangman;
 
 const startGameButton = document.getElementById('start-game-button');
 
-startGameButton.addEventListener('click', event => {
+startGameButton && startGameButton.addEventListener('click', event => {
   hangman = new Hangman(['node', 'javascript', 'react', 'miami', 'paris', 'amsterdam', 'lisboa']);
 
   // HINT (uncomment when start working on the canvas portion of the lab)
