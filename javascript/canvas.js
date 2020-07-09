@@ -27,7 +27,7 @@ class HangmanCanvas {
     this.context.stroke()
   }
 
-  writeCorrectLetter(index) {
+  writeCorrectLetter(letter) {
     // ... your code goes here
     this.context.font = '40px Arial'
     hangman.secretWord.split('').forEach((letter, i) => {

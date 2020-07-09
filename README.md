@@ -43,25 +43,25 @@ In the `javascript/hangman.js` file, create Hangman class and its methods as des
 
 First let's take a look at the starter code in the `hangman.js` file. We can see that, in this file, we will be developing the `Hangman` class, and all its methods. The `Hangman` class has `constructor` method and it expects an array of words as the single parameter.
 
-Let's start with properties. `Hangman` should have the following properties:
+Let's start with properties. `Hangman` should have the **following properties**:
 
-- **words** - an `array` to store all the words that could be given to a player to guess. When the class is instantiated, all the words passed to the constructor as an argument will be saved in this property.
+- **`words`** - an `array` to store all the words that could be given to a player to guess. When the class is instantiated, all the words passed to the constructor as an argument will be saved in this property.
 
-- **secretWord** - here we will store the word that has been picked as a secret word for the current game. Every time a new game starts, a random word from the `this.words` array needs to be picked as the secret word to be guessed by the player. That is, when the class is instantiated, call the method `pickWord()` and save the result to the property `secretWord`.
+- **`secretWord`** - a `string` that will store the word that has been picked as a secret word for the current game. Every time a new game starts, a random word from the `this.words` array needs to be picked as the secret word to be guessed by the player. That is, when the class is instantiated, call the method `pickWord()` and save the result to the property `secretWord`.
 
-- **letters** - an `array` in which we will store the letters that the user has already picked while trying to guess the secret word. It is important to keep the track of these letters so we can, later on, apply some logic to prevent users from repeating them.
+- **`letters`** - an `array` in which we will store the letters that the user has already picked while trying to guess the secret word. It is important to keep the track of these letters so we can, later on, apply some logic to prevent users from repeating them.
 
-- **guessedLetters** - a `string` to store the _letters_ user chose and guessed. We will use this to know when the user has won.
+- **`guessedLetters`** - a `string` to store the _letters_ user chose and guessed. We will use this to know when the user has won.
 
-- **errorsLeft** - the initial/start value should be 10, and it should decrease every time a user picks a letter that doesn't appear in the word they need to guess.
+- **`errorsLeft`** - the initial/start value should be 8, and it should decrease every time a user picks a letter that doesn't appear in the word they need to guess.
 
 #### The Hangman methods
 
-Now, let's move to the `Hangman` methods. Keep working in the same file.
+Now, let's move to the `Hangman` **methods**. Keep working in the same file.
 
 - `pickWord()` - a method that returns a random word from the array of `words`.
 
-- `checkIfLetter(keyCode)` - a method that returns _true_ or _false_ depending on the `keyCode` of the key pressed by the user: if the `keyCode` corresponds to a character from `a-z`, it should return _true_, otherwise, it should return _false_. You can use [keycode.info](https://keycode.info/) to find out which codes refer to each key.
+- `checkIfLetter(keyCode)` - a method that returns _true_ or _false_ depending on the `key` of the key pressed by the user: if the `key` corresponds to a character from `a-z`, it should return _true_, otherwise, it should return _false_. You can use [keycode.info](https://keycode.info/) to find out which codes refer to each key.
 
 - `checkClickedLetters(letter)` - a method that should check if the letter passed as an argument has already been pressed. It should return _true_ if it was not or _false_ in the opposite case.
 
@@ -99,13 +99,13 @@ hangmanCanvas = new HangmanCanvas(hangman.secretWord);
 
 #### The HangmanCanvas methods
 
-- **createBoard()** - the method that should clear the `canvas`, so every time we start the game we have a clean one. This method also should call the next one we will define, the _drawLines()_.
+- **`createBoard()`** - the method that should clear the `canvas`, so every time we start the game we have a clean one. This method also should call the next one we will define, the `drawLines()`.
 
-- **drawLines()** - the method that should draw one line for each letter of the secret word. At this point we know the secret word the user has to guess.
+- **`drawLines()`** - the method that should draw one line for each letter of the secret word. At this point we know the secret word the user has to guess.
 
-- **writeCorrectLetter(index)** and **writeWrongLetter(letter, errorsLeft)** - the methods that should write the letter on which the user has just clicked, on the appropriate part of the canvas. After checking if the letter was not already clicked, we should write it on our board. If the secret word includes the letter, we should write it in the position where it belongs, and if the letter is not included in the secret word, we should write it on the top right corner, so that the user knows which letters were already clicked.
+- **`writeCorrectLetter(index)`** and **`writeWrongLetter(letter, errorsLeft)`** - the methods that should write the letter on which the user has just clicked, on the appropriate part of the canvas. After checking if the letter was not already clicked, we should write it on our board. If the secret word includes the letter, we should write it in the position where it belongs, and if the letter is not included in the secret word, we should write it on the top right corner, so that the user knows which letters were already clicked.
 
-- **drawHangman(errorsLeft)** - the method that should draw the **hangman**. You will see that the drawing is composed of multiple lines and one circle. Go ahead and experiment, you will see it is pretty straightforward. :wink:
+- **`drawHangman(errorsLeft)`** - the method that should draw the **`hangman`**. You will see that the drawing is composed of multiple lines and one circle. Go ahead and experiment, you will see it is pretty straightforward. :wink:
 
 ### Bonus
 
