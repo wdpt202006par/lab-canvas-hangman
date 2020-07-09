@@ -24,7 +24,18 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(letter) {
-    // ... your code goes here
+    // vérifier si la lettre à déjà été cliquée
+    this.checkIfLetter(letter);
+    // vérifier si on l'a déjà
+    this.checkClickedLetter(letter);
+    // vérfier si elle appartient au mot secret
+    // si oui, tu l'écris dans le mot à la bonne position. 
+    if (this.secretWord.includes(letter)) {
+      let position = secretWord.indexOf(letter);
+      this.addCorrectLetter(letter);
+      let positionLetter=211 + 48* position;
+      this.context.fillText(letter, positionLetter , 761, 24);
+    }
   }
 
   writeWrongLetter(letter, errorsLeft) {
@@ -42,8 +53,4 @@ class HangmanCanvas {
   winner() {
     // ... your code goes here
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1cba8aa8e85202ab4025209a5f00001de43d8b37
