@@ -42,4 +42,8 @@ class HangmanCanvas {
   winner() {
     // ... your code goes here
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1cba8aa8e85202ab4025209a5f00001de43d8b37
