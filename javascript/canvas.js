@@ -2,6 +2,7 @@ class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
     this.secretWord = secretWord;
+    this.positionWrongLetters = 600;
     // ... your code goes here
     console.log(this.secretWord);
   }
@@ -32,28 +33,26 @@ class HangmanCanvas {
 
   writeCorrectLetter(letter) {
     // ... your code goes here
-    this.context.font = "40px Arial" 
+    this.context.font = "40px Arial"
     let correctLetter = hangman.secretWord.split('');
     console.log(correctLetter)
     correctLetter.forEach((el, index) => {
       if (el === letter) {
         // console.log('this letter exist');
-        this.context.fillText(el, 255+index*46, 760);
-      } 
+        this.context.fillText(el, 255 + index * 46, 760);
+      }
     })
   }
 
   writeWrongLetter(letter, errorsLeft) {
     // ... your code goes here
-    // this.context.font = "40px Arial" 
-    // let correctLetter = hangman.secretWord.split('');
-    // console.log(correctLetter)
-    // correctLetter.forEach((el, index) => {
-    //   if (el === letter) {
-    //     // console.log('this letter exist');
-    //     this.context.fillText(el, 700+index*46, 250);
-    //   } 
-    // })
+    if (this.secretWord.includes(letter) === false) {
+      console.log("this letter does'nt exist");
+      this.context.font = "40px Arial"
+      this.context.fillText(letter, this.positionWrongLetters, 500);
+      this.positionWrongLetters += 30;
+      errorsLeft -= 1;
+    }
   }
 
   drawHangman(errorsLeft) {
