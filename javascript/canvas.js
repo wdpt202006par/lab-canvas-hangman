@@ -24,6 +24,7 @@ class HangmanCanvas {
       k += 46;
       j += 46;
       this.context.beginPath()
+      this.context.lineWidth = 3;
       this.context.moveTo(k, 774);
       this.context.lineTo(j, 774);
       this.context.stroke();
@@ -49,14 +50,67 @@ class HangmanCanvas {
     if (this.secretWord.includes(letter) === false) {
       console.log("this letter does'nt exist");
       this.context.font = "40px Arial"
-      this.context.fillText(letter, this.positionWrongLetters, 500);
+      this.context.fillText(letter.toUpperCase(), this.positionWrongLetters, 440);
       this.positionWrongLetters += 30;
       errorsLeft -= 1;
     }
   }
 
   drawHangman(errorsLeft) {
-    // ... your code goes here
+    this.context.beginPath()
+    this.context.lineWidth = 3;
+    switch (errorsLeft) {
+      case 9:
+        this.context.moveTo(70, 774);
+        this.context.lineTo(170, 774);
+        this.context.stroke();
+        break;
+      case 8:
+        this.context.moveTo(70, 774);
+        this.context.lineTo(120, 744);
+        this.context.stroke();
+        break;
+      case 7:
+        this.context.moveTo(170, 774);
+        this.context.lineTo(120, 744);
+        this.context.stroke();
+        break;
+      case 6:
+        this.context.moveTo(120, 744);
+        this.context.lineTo(120, 340);
+        this.context.stroke();
+        break;
+      case 5:
+        this.context.moveTo(120, 340);
+        this.context.lineTo(367, 340);
+        this.context.stroke();
+        break;
+      case 4:
+        this.context.moveTo(367, 340);
+        this.context.lineTo(367, 370);
+        this.context.stroke();
+        break;
+      case 3:
+        this.context.arc(367, 400, 30, 0, Math.PI * 2);
+        this.context.stroke();
+        break;
+      case 2:
+        this.context.moveTo(367, 430);
+        this.context.lineTo(367, 560);
+        this.context.stroke();
+        break;
+      case 1:
+        this.context.moveTo(367, 560);
+        this.context.lineTo(318, 640);
+        this.context.stroke();
+        break;
+      case 0:
+        this.context.moveTo(367, 560);
+        this.context.lineTo(421, 640);
+        this.context.stroke();
+        break;
+        this.context.closePath()
+    }
   }
 
   gameOver() {
