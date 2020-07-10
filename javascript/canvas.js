@@ -28,8 +28,9 @@ class HangmanCanvas {
 
     let x = 250;
     let y = 700;
-    let lineLenght = 300;
+    let endLinePosition = 300;
     let lineSpace = 25;
+    let lineLength = endLinePosition - x;
 
     for (let i=0; i < this.secretWord.length; i++) {
       
@@ -37,14 +38,13 @@ class HangmanCanvas {
 
       this.context.beginPath(); // Creates a new path
       this.context.moveTo(x, y); // Moves the pen
-      this.context.lineTo(lineLenght, y); // Draws a line from the current position to the position specified by x and y.
+      this.context.lineTo(endLinePosition, y); // Draws a line from the current position to the position specified by x and y.
       this.context.stroke(); // Draws the shape by stroking its outline.
       this.context.closePath(); // Closes the path so that future drawing commands are once again directed to the context.
       
-      x = lineLenght + lineSpace;
-      lineLenght = x + 50;
+      x = endLinePosition + lineSpace;
+      endLinePosition = x + lineLength;
     }
-
   }
 
   writeCorrectLetter(letter) {
@@ -64,14 +64,14 @@ class HangmanCanvas {
 
   writeWrongLetter(letter, errorsLeft) {
     // ... your code goes here
-    this.context.font = '50px';
-    this.context.fillText(letter, this.x, 50);
+    // this.context.font = '50px';
+    // this.context.fillText(letter, this.x, 50);
 
-    this.context.clearRect(0, 0, 250, 250);
-    this.context.font = '50px';
-		this.context.fillText(errorsLeft, 150, 100);
+    // this.context.clearRect(0, 0, 250, 250);
+    // this.context.font = '50px';
+		// this.context.fillText(errorsLeft, 150, 100);
 		
-		this.x += 100;
+		// this.x += 100;
 
     // let x = 100;
     // let y = 900;
@@ -87,37 +87,39 @@ class HangmanCanvas {
   }
 
 	drawHangman(errorsLeft) {
-	// Triangle
-		this.context.beginPath();
-		this.context.moveTo(20,650);
-		this.context.lineTo(130, 650);
+    this.context.lineWidth = 2;
+
+	// Triangle    
+    this.context.beginPath();
+		this.context.moveTo(50,700);
+		this.context.lineTo(200, 700);
 		this.context.closePath();
 		this.context.stroke();
 
 		this.context.beginPath();
-		this.context.moveTo(20,650);
-		this.context.lineTo(70, 600);
+		this.context.moveTo(50,700);
+		this.context.lineTo(125, 650);
 		this.context.closePath();
 		this.context.stroke();
 
 		this.context.beginPath();
-		this.context.moveTo(130,650);
-		this.context.lineTo(70, 600);
+		this.context.moveTo(200,700);
+		this.context.lineTo(125, 650);
 		this.context.closePath();
 		this.context.stroke();
 
 		// Stand
     this.context.beginPath();
-    this.context.moveTo(70, 600);
-    this.context.lineTo(70, 300);
+    this.context.moveTo(125, 650);
+    this.context.lineTo(125, 100);
     this.context.closePath();
     this.context.stroke();
 
     const drawLastStandPart = () => {
       // Horizontal part of stand
       this.context.beginPath();
-      this.context.moveTo(70, 300);
-      this.context.lineTo(300, 300);
+      this.context.moveTo(125, 100);
+      this.context.lineTo(400, 100);
       this.context.closePath();
       this.context.stroke();
     }
@@ -125,8 +127,8 @@ class HangmanCanvas {
     const drawHangedRope = () => {
       // Hanged rope
       this.context.beginPath();
-      this.context.moveTo(300, 300);
-      this.context.lineTo(300, 340);
+      this.context.moveTo(400, 100);
+      this.context.lineTo(400, 150);
       this.context.closePath();
       this.context.stroke();
       }
@@ -134,7 +136,7 @@ class HangmanCanvas {
     const drawHead = () => {
     // Head
     this.context.beginPath();
-    this.context.arc(300, 375, 35, 0, Math.PI * 2);
+    this.context.arc(400, 195, 45, 0, Math.PI * 2);
     this.context.stroke();
     this.context.closePath();
     }
@@ -142,8 +144,8 @@ class HangmanCanvas {
     const drawBody = () => {
     // Body
     this.context.beginPath();
-    this.context.moveTo(300, 410);
-    this.context.lineTo(300, 550);
+    this.context.moveTo(400, 240);
+    this.context.lineTo(400, 440);
     this.context.closePath();
     this.context.stroke();
     }
@@ -151,8 +153,8 @@ class HangmanCanvas {
     const drawLeftArm = () => {
     // Left arm
     this.context.beginPath();
-    this.context.moveTo(300, 460);
-    this.context.lineTo(220, 420);
+    this.context.moveTo(400, 330);
+    this.context.lineTo(320, 300);
     this.context.closePath();
     this.context.stroke();
     }
@@ -160,8 +162,8 @@ class HangmanCanvas {
     const drawRightArm = () => {
     // Right arm
     this.context.beginPath();
-    this.context.moveTo(300, 460);
-    this.context.lineTo(380, 420);
+    this.context.moveTo(400, 330);
+    this.context.lineTo(480, 300);
     this.context.closePath();
     this.context.stroke();
     }
@@ -169,8 +171,8 @@ class HangmanCanvas {
     const drawLeftLeg = () => {
     // Left leg
     this.context.beginPath();
-    this.context.moveTo(300, 550);
-    this.context.lineTo(240, 600);
+    this.context.moveTo(400, 440);
+    this.context.lineTo(330, 520);
     this.context.closePath();
     this.context.stroke();
     }
@@ -178,8 +180,8 @@ class HangmanCanvas {
     const drawRightLeg = () => {
       // Right leg
       this.context.beginPath();
-      this.context.moveTo(300, 550);
-      this.context.lineTo(360, 600);
+      this.context.moveTo(400, 440);
+      this.context.lineTo(470, 520);
       this.context.closePath();
       this.context.stroke();
     }
