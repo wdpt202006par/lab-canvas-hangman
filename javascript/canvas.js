@@ -12,20 +12,6 @@ class HangmanCanvas {
   }
 
   drawLines() {
-    // let x = 250;
-    // let y = 700;
-    // let xLine = 300;
-
-    // for (let i=0; i < this.secretWord.length; i++) {
-    //   this.context.beginPath(); // Creates a new path.
-    //   this.context.moveTo(x, y); // Moves the pen
-    //   this.context.lineTo(xLine, y);
-    //   this.context.stroke();
-    //   this.context.closePath();
-    //   x += 150;
-    //   xLine += 150;
-    // }
-
     let x = 250;
     let y = 700;
     let endLinePosition = 300;
@@ -48,18 +34,18 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(letter) {
-    //... your code goes here
     // Write the letter the user just clicked
-    let x = 250;
-    let y = 700;
+    let x = 275;
+    let y = 695;
     hangman.secretWord.split('').forEach((element, i) => {
       if (element === letter) {
-        x += 80 * i;
-        this.context.font = '50px serif';
-        this.context.fillText(letter, x, y);
-        x = 250;
+        x += 75 * i;
+        this.context.font = '50px sans-serif';
+        this.context.textAlign = "center";
+        this.context.fillText(letter.toUpperCase(), x, y);
+        x = 275;
       }
-    }); 
+    });
   }
 
   writeWrongLetter(letter, errorsLeft) {
