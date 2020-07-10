@@ -87,16 +87,16 @@ class HangmanCanvas {
     this.context.fillText(letter.toUpperCase(), letterPosition, 200);
 
     //errorsLeft
-    this.context.clearRect(510, 220, 500, 500);
+    this.context.clearRect(510, 220, 200, 300);
     this.context.textAlign = "left";
     this.context.font = '30px sans-serif';
-    this.context.fillText(`Only ${errorsLeft} errors left`, 530, 250);    
+    this.context.fillText(`${errorsLeft} errors left`, 530, 250);    
   }
 
 	drawHangman(errorsLeft) {
     this.context.lineWidth = 2;
 
-	// Triangle    
+  	// Triangle
     this.context.beginPath();
 		this.context.moveTo(50,700);
 		this.context.lineTo(200, 700);
@@ -260,8 +260,17 @@ class HangmanCanvas {
     }		
 	}
 
-  gameOver() {
-    // ... your code goes here
+  gameOver() {    
+    this.context.clearRect(0, 0, 1200, 800);
+
+    const gameOverImg = new Image(); // Create new <img> element
+    gameOverImg.src = './images/gameover.png'; // Set source path
+
+    // Keep ratio of image
+    gameOverImg.onload = function() {
+      const ratio = gameOverImg.width/gameOverImg.height; // 1.333
+      context.drawImage(gameOverImg, 0, 0, 100, 100/ratio);
+    };
   }
 
   winner() {
