@@ -267,13 +267,22 @@ class HangmanCanvas {
     gameOverImg.src = './images/gameover.png'; // Set source path
 
     // Keep ratio of image
-    gameOverImg.onload = function() {
+    gameOverImg.onload = () => {
       const ratio = gameOverImg.width/gameOverImg.height; // 1.333
-      context.drawImage(gameOverImg, 0, 0, 100, 100/ratio);
+      this.context.drawImage(gameOverImg, 0, 0, 1200, 1200/ratio);
     };
   }
 
   winner() {
-    // ... your code goes here
+    this.context.clearRect(0, 0, 1200, 800);
+
+    const WinnerImg = new Image(); // Create new <img> element
+    WinnerImg.src = './images/awesome.png'; // Set source path
+
+    // Keep ratio of image
+    WinnerImg.onload = () => {
+      const ratio = WinnerImg.width/WinnerImg.height; // 1.333
+      this.context.drawImage(WinnerImg, 0, 0, 1200, 1200/ratio);
+    };
   }
 }
