@@ -71,6 +71,8 @@ if (startGameButton) {
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
 
     // ... your code goes here
+
+    console.log(hangman.secretWord);
   });
 }
 

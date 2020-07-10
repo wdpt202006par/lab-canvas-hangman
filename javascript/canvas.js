@@ -69,8 +69,6 @@ class HangmanCanvas {
   }
 
 	drawHangman(errorsLeft) {
-	// 	// ... your code goes here
-
 	// Triangle
 		this.context.beginPath();
 		this.context.moveTo(20,650);
@@ -97,57 +95,142 @@ class HangmanCanvas {
     this.context.closePath();
     this.context.stroke();
 
-    this.context.beginPath();
-    this.context.moveTo(70, 300);
-    this.context.lineTo(300, 300);
-    this.context.closePath();
-		this.context.stroke();
-
-		this.context.beginPath();
-    this.context.moveTo(300, 300);
-    this.context.lineTo(300, 340);
-    this.context.closePath();
-		this.context.stroke();
-		
-		// Head
+    const drawLastStandPart = () => {
+      // Horizontal part of stand
+      this.context.beginPath();
+      this.context.moveTo(70, 300);
+      this.context.lineTo(300, 300);
+      this.context.closePath();
+      this.context.stroke();
+    }
+    
+    const drawHangedRope = () => {
+      // Hanged rope
+      this.context.beginPath();
+      this.context.moveTo(300, 300);
+      this.context.lineTo(300, 340);
+      this.context.closePath();
+      this.context.stroke();
+      }
+      
+    const drawHead = () => {
+    // Head
     this.context.beginPath();
     this.context.arc(300, 375, 35, 0, Math.PI * 2);
     this.context.stroke();
     this.context.closePath();
+    }
 
-		// Body
+    const drawBody = () => {
+    // Body
     this.context.beginPath();
     this.context.moveTo(300, 410);
     this.context.lineTo(300, 550);
     this.context.closePath();
-		this.context.stroke();
-		
-		// Hands
-		this.context.beginPath();
+    this.context.stroke();
+    }
+    
+    const drawLeftArm = () => {
+    // Left arm
+    this.context.beginPath();
     this.context.moveTo(300, 460);
     this.context.lineTo(220, 420);
     this.context.closePath();
-		this.context.stroke();
-		
-		this.context.beginPath();
+    this.context.stroke();
+    }
+    
+    const drawRightArm = () => {
+    // Right arm
+    this.context.beginPath();
     this.context.moveTo(300, 460);
     this.context.lineTo(380, 420);
     this.context.closePath();
     this.context.stroke();
+    }
 
-		// Legs
+    const drawLeftLeg = () => {
+    // Left leg
     this.context.beginPath();
     this.context.moveTo(300, 550);
     this.context.lineTo(240, 600);
     this.context.closePath();
     this.context.stroke();
+    }
 
-    this.context.beginPath();
-    this.context.moveTo(300, 550);
-    this.context.lineTo(360, 600);
-    this.context.closePath();
-    this.context.stroke();
-		
+    const drawRightLeg = () => {
+      // Right leg
+      this.context.beginPath();
+      this.context.moveTo(300, 550);
+      this.context.lineTo(360, 600);
+      this.context.closePath();
+      this.context.stroke();
+    }
+    
+    switch (errorsLeft) {
+      case 7 :
+        drawLastStandPart();
+        break;
+
+      case 6:
+        drawLastStandPart();
+        drawHangedRope();
+        break;
+
+      case 5:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        break;
+
+      case 4:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        drawBody();
+        break;
+
+      case 3:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        drawBody();
+        drawLeftArm();
+        break;
+
+      case 2:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        drawBody();
+        drawLeftArm();
+        drawRightArm();
+        break;
+
+      case 1:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        drawBody();
+        drawLeftArm();
+        drawRightArm();
+        drawLeftLeg();
+        break;
+
+      case 0:
+        drawLastStandPart();
+        drawHangedRope();
+        drawHead();
+        drawBody();
+        drawLeftArm();
+        drawRightArm();
+        drawLeftLeg();
+        drawRightLeg();
+        break;
+        
+      default:
+        // statements executed when none of the values match the value of the expression    
+        break;
+    }		
 	}
 
   gameOver() {
