@@ -103,6 +103,8 @@ if (startGameButton) {
 
 document.addEventListener('keydown', event => {
   console.log(event.key)
+  hangmanCanvas.writeCorrectLetter(event.key);
+  hangmanCanvas.writeWrongLetter(event.key, hangman.errorsLeft);
   // React to user pressing a key
   // ... your code goes here
   //si lettre de l'alphabet 
