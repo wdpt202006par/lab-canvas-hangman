@@ -3,6 +3,10 @@ class HangmanCanvas {
     this.context = document.getElementById('hangman').getContext('2d');
     this.secretWord = secretWord;
     this.positionWrongLetters = 600;
+    this.img = new Image();
+    this.img.src = '/images/gameover.png';
+    // this.imgWinner = new Image();
+    // this.imgWinner.src = '/images/awesome.png';
     // ... your code goes here
     console.log(this.secretWord);
   }
@@ -114,10 +118,14 @@ class HangmanCanvas {
   }
 
   gameOver() {
-    // ... your code goes here
-  }
+    this.context.clearRect(0, 0, 1200, 800);
+    this.imgScale = 570 / 240;
+    this.context.drawImage(this.img, 100, 400, 400 * this.imgScale, 400);
+  };
 
   winner() {
-    // ... your code goes here
+    this.context.clearRect(0, 0, 1200, 800);
+    this.imgScale = 872 / 618;
+    this.context.drawImage(this.img, 300, 400, 400 * this.imgScale, 400);
   }
 }

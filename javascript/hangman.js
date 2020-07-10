@@ -49,6 +49,7 @@ class Hangman {
       return true;
     }
   }
+
   checkWinner() {
     // ... your code goes here
     if (this.guessedLetters.length === this.secretWord.length) {
