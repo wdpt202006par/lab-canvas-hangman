@@ -12,21 +12,39 @@ class HangmanCanvas {
   }
 
   drawLines() {
-    // ... your code goes here
+    // let x = 250;
+    // let y = 700;
+    // let xLine = 300;
+
+    // for (let i=0; i < this.secretWord.length; i++) {
+    //   this.context.beginPath(); // Creates a new path.
+    //   this.context.moveTo(x, y); // Moves the pen
+    //   this.context.lineTo(xLine, y);
+    //   this.context.stroke();
+    //   this.context.closePath();
+    //   x += 150;
+    //   xLine += 150;
+    // }
+
     let x = 250;
     let y = 700;
-    let xLine = 300;
+    let lineLenght = 300;
+    let lineSpace = 25;
 
     for (let i=0; i < this.secretWord.length; i++) {
+      
+      this.context.lineWidth = 2;
 
-      this.context.beginPath();
-      this.context.moveTo(x, y);
-      this.context.lineTo(xLine, y);
-      this.context.stroke();
-      this.context.closePath();
-      x += 150;
-      xLine += 150;
+      this.context.beginPath(); // Creates a new path
+      this.context.moveTo(x, y); // Moves the pen
+      this.context.lineTo(lineLenght, y); // Draws a line from the current position to the position specified by x and y.
+      this.context.stroke(); // Draws the shape by stroking its outline.
+      this.context.closePath(); // Closes the path so that future drawing commands are once again directed to the context.
+      
+      x = lineLenght + lineSpace;
+      lineLenght = x + 50;
     }
+
   }
 
   writeCorrectLetter(letter) {
