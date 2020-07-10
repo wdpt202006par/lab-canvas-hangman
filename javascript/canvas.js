@@ -49,27 +49,48 @@ class HangmanCanvas {
   }
 
   writeWrongLetter(letter, errorsLeft) {
-    // ... your code goes here
-    // this.context.font = '50px';
-    // this.context.fillText(letter, this.x, 50);
+    let letterPosition = 550;
 
-    // this.context.clearRect(0, 0, 250, 250);
-    // this.context.font = '50px';
-		// this.context.fillText(errorsLeft, 150, 100);
-		
-		// this.x += 100;
+    //Wrong letters
+    switch (errorsLeft) {
+      case 7 :
+        letterPosition = 550;
+        break;
+      case 6 :
+        letterPosition = 600;
+        break;
+      case 5 :
+        letterPosition = 650;
+        break;
+      case 4 :
+        letterPosition = 700;
+        break;
+      case 3 :
+        letterPosition = 750;
+        break;
+      case 2 :
+        letterPosition = 800;
+        break;
+      case 1 :
+        letterPosition = 850;
+        break;
+      case 0 :
+        letterPosition = 900;
+        break;
 
-    // let x = 100;
-    // let y = 900;
+      default:
+        // statements executed when none of the values match the value of the expression    
+        break;
+    }
+    this.context.font = '50px sans-serif';
+    this.context.textAlign = "center";
+    this.context.fillText(letter.toUpperCase(), letterPosition, 200);
 
-    // hangman.secretWord.split('').forEach((element, i) => {
-    //   if (letter != element) {
-    //     x += 100 * i;
-    //     this.context.font = '48px serif';
-    //     this.context.fillText(letter, x, y);
-    //     x = 115;
-    //   }
-    // });
+    //errorsLeft
+    this.context.clearRect(510, 220, 500, 500);
+    this.context.textAlign = "left";
+    this.context.font = '30px sans-serif';
+    this.context.fillText(`Only ${errorsLeft} errors left`, 530, 250);    
   }
 
 	drawHangman(errorsLeft) {
