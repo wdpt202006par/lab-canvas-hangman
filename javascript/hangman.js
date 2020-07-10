@@ -1,19 +1,16 @@
 class Hangman {
   constructor(words) {
     this.words = words;
-    // ... your code goes here
     this.secretWord = this.pickWord();
     this.letters = []; // all unique letters tried
     this.guessedLetters = ''; // the already found letters
     this.errorsLeft = 8;
   }
   pickWord() {
-    // ... your code goes here
     const rand = Math.floor(Math.random()*this.words.length);
     return this.words[rand];
   }
   checkIfLetter(key) {
-    // ... your code goes here
     const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     if (alphabet.includes(key)) {
       return true;
@@ -22,7 +19,6 @@ class Hangman {
     }
   }
   checkClickedLetters(letter) {
-    // ... your code goes here
     if (this.letters.includes(letter)) {
       // already present
       return false;
@@ -33,15 +29,12 @@ class Hangman {
     }
   }
   addCorrectLetter(letter) {
-    // ... your code goes here
     this.guessedLetters += letter;
   }
   addWrongLetter(letter) {
-    // ... your code goes here
     this.errorsLeft--;
   }
   checkGameOver() {
-    // ... your code goes here
     if (this.errorsLeft > 0) {
       return false;
     } else {
@@ -49,8 +42,9 @@ class Hangman {
     }
   }
   checkWinner() {
-    // ... your code goes here
-    if (this.guessedLetters.length === this.secretWord.length) {
+    let secretWordArr = new Set(this.secretWord.split(''));
+
+    if (this.guessedLetters.length === Array.from(secretWordArr).length) {
       return true;
     } else {
       return false;
@@ -78,7 +72,6 @@ if (startGameButton) {
 
 document.addEventListener('keydown', event => {
 	// React to user pressing a key
-	// ... your code goes here
 	console.log(event.key)
 	if (hangman.checkIfLetter(event.key)) {
 		// WOOT: this is a [a-z] letter
