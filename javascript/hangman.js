@@ -58,7 +58,7 @@ class Hangman {
 
   checkWinner() {
     // ... your code goes here
-    if (this.guessedLetters.length === this.secretWord.length) {
+    if (this.guessedLetters.length === [...new Set(this.secretWord)].length) {
       return true;
     } else {
       return false;
@@ -84,6 +84,25 @@ document.addEventListener('keydown', event => {
   // React to user pressing a key
   // ... your code goes here
   console.log(event.key)
+  
+  //
+  // Flow:
+  //
+  // If the key pressed is an alphabet letter:
+  //   - Then:
+  //     A. If this letter has never been tried before
+  //       - Then
+  //         If the letter is part of the secret word:
+  //           - Then:
+  //             - we display the letter at its position
+  //             - we check if we have won
+  //           - Else:
+  //             - we display the letter to the top-right
+  //             - we trace a step of the hangman
+  //             - we check we have loose
+  //       - Else: nothing
+  //   - Else: nothing
+  //
 
   if (hangman.checkIfLetter(event.key)) {
     // WOOT: this is a [a-z] letter
