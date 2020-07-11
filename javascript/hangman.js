@@ -75,28 +75,36 @@ if (startGameButton) {
 document.addEventListener('keydown', event => {
   // React to user pressing a key
   // ... your code goes here
-
-  event.key // "/" "a"
-
-  if (event.key)
+  let letter = event.key;
+  console.log(letter)
+  if (hangman.checkIfLetter(letter)) {
+    if (hangman.checkClickedLetters(letter)) {
+      if (hangman.secretWord.includes(letter)) {
+        hangman.addCorrectLetter(letter);
+        hangmanCanvas.writeCorrectLetter(letter);
+        if (hangman.checkWinner) {
+          hangmanCanvas.winner();
+        }
+      else {
+        hangman.addWrongLetter(letter);
+        hangmanCanvas.drawHangman(hangman.errorsLeft);
+        hangmanCanvas.addWrongLetter(letter, errorsLeft)
+        if (hangman.checkGameOver) {
+          hangmanCanvas.gameOver();
+        }
+      }
+      }
+    }
+  }
 });
-
-/*
-   // vérifier si la lettre à déjà été cliquée
-    this.checkIfLetter(letter);
-    // vérifier si on l'a déjà
-    this.checkClickedLetter(letter);
-    // vérfier si elle appartient au mot secret
-*/
-
-/*Si la touche pressée est une lettre de l'alphabet
+/*Si la touche pressée est une lettre de l'alphabet - ok
   - Alors:
-    Si cette lettre n'a jamais été essayé avant
+    Si cette lettre n'a jamais été essayé avant - ok 
       - Alors
-        Si la lettre est contenue dans le mot secret:
+        Si la lettre est contenue dans le mot secret: - ok 
           - Alors:
-            - on affiche la lettre à sa place
-            - on vérifie si gagné
+            - on affiche la lettre à sa place - ok
+            - on vérifie si gagné ok
           - Sinon:
             - on affiche la lettre en haut a droite
             - on trace une étape du pendu
