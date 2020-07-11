@@ -1,7 +1,5 @@
 class HangmanCanvas {
-  constructor(secretWord) {
-    console.log('secretWord', secretWord);
-
+  constructor() {
     this.context = document.getElementById('hangman').getContext('2d');
     // ... your code goes here
     this.createBoard()
