@@ -18,14 +18,14 @@ class Hangman {
     if (alphabet.includes(key)) {
       return true;
     } else {
-      return false;
+      return alert ('NOT A LETTER!');
     }
   }
   checkClickedLetters(letter) {
     // ... your code goes here
     if (this.letters.includes(letter)) {
       // already present
-      return false;
+      return alert(`${letter} Already used!`);
     } else {
       // not already present
       this.letters.push(letter);
@@ -34,18 +34,23 @@ class Hangman {
   }
   addCorrectLetter(letter) {
     // ... your code goes here
-    this.guessedLetters += letter;
+    this.guessedLetters+= letter;
+    return this.guessedLetters
   }
   addWrongLetter(letter) {
     // ... your code goes here
-    this.errorsLeft--;
+    if (this.errorsLeft>0){
+      hangmanCanvas.writeWrongLetter(letter, this.errorsLeft);
+      console.log(`cette lettre n'existe pas ${letter}`)
+      this.errorsLeft += -1;
+    }
   }
   checkGameOver() {
     // ... your code goes here
-    if (this.errorsLeft > 0) {
-      return false;
+    if (this.errorsLeft ===0) {
+      return true
     } else {
-      return true;
+      return false
     }
   }
   checkWinner() {
@@ -80,20 +85,24 @@ document.addEventListener('keydown', event => {
   if (hangman.checkIfLetter(letter)) {
     if (hangman.checkClickedLetters(letter)) {
       if (hangman.secretWord.includes(letter)) {
-        hangman.addCorrectLetter(letter);
         hangmanCanvas.writeCorrectLetter(letter);
-        if (hangman.checkWinner) {
-          hangmanCanvas.winner();
+          if (hangman.checkWinner()) {
+            setTimeout(() => {
+              hangmanCanvas.winner();
+            }, 500);
+            
+          }
         }
-      else {
-        hangman.addWrongLetter(letter);
-        hangmanCanvas.drawHangman(hangman.errorsLeft);
-        hangmanCanvas.addWrongLetter(letter, errorsLeft)
-        if (hangman.checkGameOver) {
-          hangmanCanvas.gameOver();
+        else {
+          hangman.addWrongLetter(letter);
+
+          hangmanCanvas.drawHangman(hangman.errorsLeft);
+          
+          if (hangman.checkGameOver()) {
+            hangmanCanvas.gameOver();
+          }
         }
-      }
-      }
+      
     }
   }
 });

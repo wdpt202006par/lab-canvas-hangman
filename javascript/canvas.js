@@ -1,3 +1,4 @@
+
 class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
@@ -26,188 +27,157 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(letter) {
-    let x = 220;
+    let x ;
     let y = 762;
     let splitWord = hangman.secretWord.split("");
-    let index = hangman.secretWord.indexOf(letter);
+    // let index = hangman.secretWord.indexOf(letter);
+    
     splitWord.forEach((element, index) => {
       if (letter === element) {
-      x = x + 45*index;
-      this.context.font = "35px sans-serif"
-      this.context.fillText(letter.toUpperCase(), x, y);
+        x = 220 + 45*index;
+        console.log(index)
+        this.context.font = "35px sans-serif"
+        this.context.fillText(letter.toUpperCase(), x, y);
+        console.log(`guessed letters: ${hangman.addCorrectLetter(letter)}`);
       }
     })
     } 
 
   writeWrongLetter(letter, errorsLeft) {
-    let x = 506;
+    let x = 500;
     let y = 441;
+    let positionx=x;
     let ecart = 30;
+    console.log(`errors left= ${errorsLeft}`)
     switch(errorsLeft) {
       case 7 : 
-        positionx = x;
-        break;
-      case 6 :
         positionx = x+ecart;
         break;
-      case 5 : 
+      case 6 :
         positionx = x+ecart*2;
         break;
-      case 4 : 
+      case 5 : 
         positionx = x+ecart*3;
         break;
-      case 3 : 
+      case 4 : 
         positionx = x+ecart*4;
         break;
-      case 2 : 
+      case 3 : 
         positionx = x+ecart*5;
         break;
-      case 1 : 
+      case 2 : 
         positionx = x+ecart*6;
         break;
-      case 0 : 
+      case 1 : 
         positionx = x+ecart*7;
+        break;
+      case 0 : 
+        positionx = x+ecart*8;
         break;
       default:
         break;
     }
-    this.context.font = "35px sans-serif"
-    this.context.fillText(letter.toUpperCase(), positionx, y);
+    this.context.font = "35px sans-serif";
+    this.context.fillText(letter.toUpperCase(),positionx, y);
   }
 
   drawHangman(errorsLeft) {
+ 
     // draw
-    const base = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(67,776);
-      this.context.lineTo(173,776);
-      this.context.moveTo(173,776);
-      this.context.lineTo(120,742);
-      this.context.moveTo(120,742);
-      this.context.lineTo(67,776);
-      this.context.stroke();
-    }
-
-    const verticalbar = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(120,742);
-      this.context.lineTo(120,341);
-      this.context.stroke();
-    }
-
-    const horizontalbar = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(120,341);
-      this.context.lineTo(370,341);
-      this.context.stroke();
-    }
-
-    const rope = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(370,341);
-      this.context.lineTo(370,374);
-      this.context.stroke();
-    }
-
-    const head = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.arc(369, 408, 64, 0, Math.PI * 2)
-      this.context.stroke();
-    }
-
-    const body = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(370,443);
-      this.context.lineTo(370,576);
-      this.context.stroke();
-    }
-
-    const rightLeg = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(370,576);
-      this.context.lineTo(423,641);
-      this.context.stroke();
-    }
-
-    const leftLeg = function () {
-      this.context.beginPath(); 
-      this.context.lineWidth = 3;
-      this.context.moveTo(370,576);
-      this.context.lineTo(317,641);
-      this.context.stroke();
-    }
-
+    
     switch (errorsLeft) {
       case 7 : 
-        base();
+        console.log(`il te reste ${errorsLeft} essais:`);
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(67,776);
+        this.context.lineTo(173,776);
+        this.context.moveTo(173,776);
+        this.context.lineTo(120,742);
+        this.context.moveTo(120,742);
+        this.context.lineTo(67,776);
+        this.context.stroke()      
         break;
       case 6 : 
-        base();
-        verticalbar();
-        break;
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(120,742);
+        this.context.lineTo(120,341);
+        this.context.stroke()
+          break;
       case 5 : 
-        base();
-        verticalbar();
-        horizontalbar();
+        this.context.beginPath();
+        this.context.lineWidth = 3;      
+        this.context.moveTo(120,341);
+        this.context.lineTo(370,341);
+        this.context.stroke()     
         break;
-      case 4 : 
-        base();
-        verticalbar();
-        horizontalbar();
-        rope();
+      case 4 :
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(370,341);
+        this.context.lineTo(370,374);
+        this.context.stroke()    
         break;
       case 3 : 
-        base();
-        verticalbar();
-        horizontalbar();
-        rope();
-        head();
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.arc(370, 410, 35, 0, Math.PI * 2);
+        this.context.stroke()
         break;
       case 2 : 
-        base();
-        verticalbar();
-        horizontalbar();
-        rope();
-        head();
-        body();
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(370,443);
+        this.context.lineTo(370,576);
+        this.context.stroke()
         break;
       case 1 :
-        base();
-        verticalbar();
-        horizontalbar();
-        rope();
-        head();
-        body();
-        leftLeg();
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(370,576);
+        this.context.lineTo(423,641);
+        this.context.stroke()
         break;
       case 0 :
-          base();
-          verticalbar();
-          horizontalbar();
-          rope();
-          head();
-          body();
-          leftLeg();
-          rightLeg();
-          break;
-        default :
-          break;
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(370,576);
+        this.context.lineTo(317,641);
+        this.context.stroke()
+        break;
+      default :
+        break;
     }
 
   }
 
   gameOver() {
     // ... your code goes here
+    const imageGO = document.createElement('img');
+    imageGO.src = "images/gameover.png";
+  
+    // TODO
+    imageGO.onload = () => {
+      this.context.drawImage(imageGO, 320, 300, 500, 400);
+    }  
+    setTimeout(() => {
+      this.context.clearRect(0, 0, 800 , 1200 );
+
+    }, 4000);
   }
 
   winner() {
     // ... your code goes here
+    const imageAW = document.createElement('img');
+    imageAW.src = "images/awesome.png";
+  
+    // TODO
+    imageAW.onload = () => {
+      this.context.drawImage(imageAW, 300, 300, 400, 400);
+    } 
+    setTimeout(() => {
+      this.context.clearRect(0, 0, 800 , 1200 );
+    }, 4000);
   }
 }
