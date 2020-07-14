@@ -74,7 +74,6 @@ if (startGameButton) {
     // HINT (uncomment when start working on the canvas portion of the lab)
     hangman.secretWord = hangman.pickWord();
     hangmanCanvas = new HangmanCanvas(hangman.secretWord);
-
     // ... your code goes here
   });
 }
@@ -115,4 +114,3 @@ document.addEventListener('keydown', event => {
     console.log('not a letter')
   }
 });
-

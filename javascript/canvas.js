@@ -2,6 +2,8 @@ class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
     this.createBoard();
+    const winImg = new Image();
+    winImg.src = "./images/awesome.png";
 
   }
 
@@ -13,7 +15,7 @@ class HangmanCanvas {
   drawLines() {
     const longTrait = 32
     let ecart = 17
-    let x = 205
+    let x = 270
 
     for (let i = 0; i < hangman.secretWord.length; i++) {
       this.context.beginPath();
@@ -30,7 +32,7 @@ class HangmanCanvas {
     this.context.font = '40px sans-serif'; // UTILE POUR AFFICHER LA POLICE SINON CA NE MARCHERA PAS
     hangman.secretWord.split('').forEach((element, index) => {
       if (element === letter) {
-        this.context.fillText(element.toUpperCase(), 205 + index * (17 + 32), 770); // pour placer les bonnes lettres au bon endroit, il faut ajouter la taille du trait.
+        this.context.fillText(element.toUpperCase(), 270 + index * (17 + 32), 770); // pour placer les bonnes lettres au bon endroit, il faut ajouter la taille du trait.
       }
     })
   }
@@ -48,14 +50,76 @@ class HangmanCanvas {
   }
 
   drawHangman(errorsLeft) {
-    // ... your code goes here
+    switch (errorsLeft) {
+      case 7: // first mistake
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(145, 778);
+        this.context.lineTo(245, 778);
+        this.context.lineTo(195, 743);
+        this.context.closePath();
+        this.context.stroke();
+        break;
+      case 6:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(195, 743);
+        this.context.lineTo(195, 343); // Does JS keep record of the last end point even after break ?
+        this.context.stroke();
+        break;
+      case 5:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(195, 343);
+        this.context.lineTo(445, 343);
+        this.context.stroke();
+        break;
+      case 4:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(445, 343);
+        this.context.lineTo(445, 373);
+        this.context.stroke();
+        break;
+      case 3:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.arc(445, 406, 33, 0, Math.PI * 2); // X and Y coordinates indicates center position.
+        this.context.stroke();
+        this.context.closePath();
+        break;
+      case 2:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(445, 439);
+        this.context.lineTo(445, 569);
+        this.context.stroke();
+        this.context.closePath();
+        break;
+      case 1:
+        this.context.beginPath();
+        this.context.lineWidth = 3;
+        this.context.moveTo(445, 569);
+        this.context.lineTo(495, 635);
+        this.context.moveTo(445, 569);
+        this.context.lineTo(395, 635);
+        this.context.stroke();
+        this.context.closePath();
+        break;
+      case 0:
+        break;
+    }
   }
 
   gameOver() {
-    // ... your code goes here
+    this.context.font = "100px sans-serif";
+    this.context.fillStyle = "red";
+    this.context.fillText('GAME OVER', 500, 500); // center does not work. Is there any way like flexbox.
   }
 
   winner() {
-    // ... your code goes here
+    const winImg = new Image();
+    winImg.src = "./images/awesome.png";
+    this.context.drawImage(winImg, 0, 0, 400, 500);
   }
 }
