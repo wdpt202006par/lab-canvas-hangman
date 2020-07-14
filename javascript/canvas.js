@@ -27,17 +27,23 @@ class HangmanCanvas {
   }
 
   writeCorrectLetter(letter) {
-    this.context.font = '40px Arial' // UTILE POUR AFFICHER LA POLICE SINON CA NE MARCHERA PAS
+    this.context.font = '40px sans-serif'; // UTILE POUR AFFICHER LA POLICE SINON CA NE MARCHERA PAS
     hangman.secretWord.split('').forEach((element, index) => {
       if (element === letter) {
-        this.context.fillText(element, 285 + index * 17, 770);
+        this.context.fillText(element.toUpperCase(), 205 + index * (17 + 32), 770); // pour placer les bonnes lettres au bon endroit, il faut ajouter la taille du trait.
       }
-
-
     })
   }
 
   writeWrongLetter(letter, errorsLeft) {
+    var pos = 800
+    this.context.font = "40px sans-serif";
+    hangman.letters.forEach((element) => {
+      // if (element != letter) {
+      pos += 30
+      this.context.fillText(element.toUpperCase(), pos, 450);
+      // }
+    })
 
   }
 
