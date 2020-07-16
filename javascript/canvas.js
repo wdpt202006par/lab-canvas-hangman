@@ -162,7 +162,7 @@ class HangmanCanvas {
       this.context.drawImage(imageGO, 320, 300, 500, 400);
     }  
     setTimeout(() => {
-      this.context.clearRect(0, 0, 800 , 1200 );
+      this.context.clearRect(0, 0, 1200 , 800 );
 
     }, 4000);
   }
@@ -177,7 +177,7 @@ class HangmanCanvas {
       this.context.drawImage(imageAW, 300, 300, 400, 400);
     } 
     setTimeout(() => {
-      this.context.clearRect(0, 0, 800 , 1200 );
+      this.context.clearRect(0, 0, 1200 , 800);
     }, 4000);
   }
 }
